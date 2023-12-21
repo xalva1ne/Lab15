@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список пользователей</title>
+</head>
+<style>
+    .btn{
+        width: 150px;
+        height: 50px;
+        border-radius: 15px;
+        margin: 10px auto;
+    }
+</style>
+<body style="background-color:#24252a; color:white;">
+    <div class="container">
+        <button class="btn">
+            <a href="{{ url_for('home') }}">
+               Домой
+            </a>
+        </button>
+        <h1 class="teal-text">Список пользователей</h1>
+        <table class="striped responsive-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Никнейм</th>
+                    <th>Админ?</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ "Да" if user.admin else "Нет" }}</td>
+                    {% if user.admin %}
+                    <td>Админа нельзя удалить</td>
+                    {% else %}
+                    <td>
+                        <a href="{{ url_for('delete_user', user_id=user.id) }}" class="waves-effect waves-light btn-small red">Удалить</a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

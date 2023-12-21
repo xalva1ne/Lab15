@@ -1,0 +1,29 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+</head>
+{% include 'header.html' %}
+<body style='background-color:#24252a; color: white;'>
+    <div style='margin-left: 40%;' class="container">
+            <div class="col s12">
+                <h1>Профиль</h1>
+                <p style="font-size: 40px;">{{ user.username }}</p>
+            </div>
+
+        <form method="POST" action="{{ url_for('logout') }}">
+            <div>
+                <div>
+                    <button style="width: 150px;
+        height: 50px;
+        border-radius: 15px;
+        margin: 10px auto;" type="submit">Выйти</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

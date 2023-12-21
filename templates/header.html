@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+    .link-btn{
+        width: 150px;
+        height: 50px;
+        border-radius: 15px;
+        margin: 10px auto;
+    },
+</style>
+<body>
+    <nav>
+        <div class="container">
+        <button type="button" class="link-btn"><a href="{{ url_for('register') }}">Регистрация</a></button>
+        <button type="button" class="link-btn"><a href="{{ url_for('login') }}">Вход</a></button>
+        <button type="button" class="link-btn"><a href="{{ url_for('home') }}">Домой</a></button>
+        <button type="button" class="link-btn"><a href="{{ url_for('user') }}">Профиль</a></button>
+        {% for user in users %}
+        {% if user.admin %}
+        <button type="button" class="link-btn"><a href="{{ url_for('user_list') }}">Список пользователей</a></button>
+        {% endif %}
+        {% endfor %}
+
+</div>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>
